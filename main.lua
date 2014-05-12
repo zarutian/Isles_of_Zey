@@ -1,5 +1,5 @@
 love.load = function ()
-  print(bit32);
+  print(assert);
 end
 love.draw = function () end
 love.update = function (deltatime) end
