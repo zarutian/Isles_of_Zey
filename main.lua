@@ -51,7 +51,12 @@ Game.draw_map = function ()
   for z = 1, Game.map_dispDepth do
     for y = 1, Game.map_dispHeight do
       for x = 1, Game.map_dispWidth do
-        local tile_idx = Game.map[z][y + Game.map_y][x + Game.map_x] or 0
+        local tile_plane = Game.map[z]
+        if tile_plane == nil then tile_plane = {} end
+        local tile_row = tile_plane[y + Game.map_y]
+        if tile_row == nil then tile_row = {} end
+        local tile_idx = tile_row[x + Game.map_x]
+        if tile_idx == nil then tile_idx = 0 end
         love.graphics.draw(Game.tiles[tile_idx], (x * 32), (y * 32))
       end
     end
