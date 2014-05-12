@@ -1,7 +1,9 @@
 Game = {}
+Game.map_x = 0
+Game.map_y = 0
 Game.map_dispHeight = 16
-Game.map_dispWidth = 16
-Game.map_dispDepth = 2
+Game.map_dispWidth  = 16
+Game.map_dispDepth  =  2
 Game.map = {}
 Game.map[1] = {
   {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -28,14 +30,14 @@ Game.map[2] = {
   {0,   0,    0, 0,     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   {0,   0,  106, 107, 108, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   {0, 113,  114, 115, 116, 117, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-  {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  {0, 121,  122, 123, 124, 125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   
-  {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-  {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-  {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-  {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  {0, 129,  130, 131, 132, 133, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  {0, 137,  138, 139, 140, 141, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  {0,   0,    0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  {0,   0,    0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   
-  {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+  {0,   0,    0,  30,   0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   {0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -49,7 +51,8 @@ Game.draw_map = function ()
   for z = 1, Game.map_dispDepth do
     for y = 1, Game.map_dispHeight do
       for x = 1, Game.map_dispWidth do
-        love.graphics.draw(Game.tiles[Game.map[z][y][x]], (x * 32), (y * 32))
+        local tile_idx = Game.map[z][y + Game.map_y][x + Game.map_x] or 0
+        love.graphics.draw(Game.tiles[tile_idx], (x * 32), (y * 32))
       end
     end
   end
@@ -89,7 +92,9 @@ love.draw = function ()
   Game.draw_map()
 end
 love.update = function (deltatime) end
-love.mousepressed = function (x, y, button) end
+love.mousepressed = function (x, y, button)
+  
+end
 love.mousereleased = function (x, y, button) end
 love.keypressed = function (key) end
 love.keyreleased = function (key) end
