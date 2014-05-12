@@ -92,11 +92,21 @@ love.draw = function ()
   Game.draw_map()
 end
 love.update = function (deltatime) end
-love.mousepressed = function (x, y, button)
-  
-end
+love.mousepressed = function (x, y, button) end
 love.mousereleased = function (x, y, button) end
-love.keypressed = function (key) end
+love.keypressed = function (key)
+  if key == "up" then
+    Game.map_y = Game.map_y - 1
+    if Game.map_y < 0 then Game.map_y = 0 end
+  elseif key == "down" then
+    Game.map_y = Game.map_y + 1
+  elseif key == "left" then
+    Game.map_x = Game.map_x - 1
+    if Game.map_x < 0 then Game.map_x = 0 end
+  elseif key == "right" then
+    Game.map_x = Game.map_x + 1
+  end
+end
 love.keyreleased = function (key) end
 love.focus = function (gotFocus) end
 love.quit = function () end
